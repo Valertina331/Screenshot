@@ -1,4 +1,4 @@
-// Screenshot.cpp : ¶¨ÒåÓ¦ÓÃ³ÌĞòµÄÀàĞĞÎª¡£
+// Screenshot.cpp : Defines the class behavior of the application.
 //
 
 #include "stdafx.h"
@@ -29,32 +29,30 @@ BEGIN_MESSAGE_MAP(CScreenshotApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-// CScreenshotApp ¹¹Ôì
+// structure CScreenshotApp
 
 CScreenshotApp::CScreenshotApp()
 {
-	// TODO: ÔÚ´Ë´¦Ìí¼Ó¹¹Ôì´úÂë£¬
-	// ½«ËùÓĞÖØÒªµÄ³õÊ¼»¯·ÅÖÃÔÚ InitInstance ÖĞ
+	// TODO: åœ¨æ­¤å¤„æ·»åŠ æ„é€ ä»£ç ï¼Œ
+	// å°†æ‰€æœ‰é‡è¦çš„åˆå§‹åŒ–æ”¾ç½®åœ¨ InitInstance ä¸­
 
 }
 
 
-// Î¨Ò»µÄÒ»¸ö CScreenshotApp ¶ÔÏó
-
 CScreenshotApp theApp;
 
 
-// CScreenshotApp ³õÊ¼»¯
+// initialize CScreenshotApp
 
 BOOL CScreenshotApp::InitInstance()
 {
-	// Èç¹ûÒ»¸öÔËĞĞÔÚ Windows XP ÉÏµÄÓ¦ÓÃ³ÌĞòÇåµ¥Ö¸¶¨Òª
-	// Ê¹ÓÃ ComCtl32.dll °æ±¾ 6 »ò¸ü¸ß°æ±¾À´ÆôÓÃ¿ÉÊÓ»¯·½Ê½£¬
-	//ÔòĞèÒª InitCommonControlsEx()¡£·ñÔò£¬½«ÎŞ·¨´´½¨´°¿Ú¡£
+	// å¦‚æœä¸€ä¸ªè¿è¡Œåœ¨ Windows XP ä¸Šçš„åº”ç”¨ç¨‹åºæ¸…å•æŒ‡å®šè¦
+	// ä½¿ç”¨ ComCtl32.dll ç‰ˆæœ¬ 6 æˆ–æ›´é«˜ç‰ˆæœ¬æ¥å¯ç”¨å¯è§†åŒ–æ–¹å¼ï¼Œ
+	//åˆ™éœ€è¦ InitCommonControlsEx()ã€‚å¦åˆ™ï¼Œå°†æ— æ³•åˆ›å»ºçª—å£ã€‚
 	INITCOMMONCONTROLSEX InitCtrls;
 	InitCtrls.dwSize = sizeof(InitCtrls);
-	// ½«ËüÉèÖÃÎª°üÀ¨ËùÓĞÒªÔÚÓ¦ÓÃ³ÌĞòÖĞÊ¹ÓÃµÄ
-	// ¹«¹²¿Ø¼şÀà¡£
+	// å°†å®ƒè®¾ç½®ä¸ºåŒ…æ‹¬æ‰€æœ‰è¦åœ¨åº”ç”¨ç¨‹åºä¸­ä½¿ç”¨çš„
+	// å…¬å…±æ§ä»¶ç±»ã€‚
 	InitCtrls.dwICC = ICC_WIN95_CLASSES;
 	InitCommonControlsEx(&InitCtrls);
 
@@ -65,31 +63,24 @@ BOOL CScreenshotApp::InitInstance()
 
 	AfxEnableControlContainer();
 
-	// ±ê×¼³õÊ¼»¯
-	// Èç¹ûÎ´Ê¹ÓÃÕâĞ©¹¦ÄÜ²¢Ï£Íû¼õĞ¡
-	// ×îÖÕ¿ÉÖ´ĞĞÎÄ¼şµÄ´óĞ¡£¬ÔòÓ¦ÒÆ³ıÏÂÁĞ
-	// ²»ĞèÒªµÄÌØ¶¨³õÊ¼»¯Àı³Ì
-	// ¸ü¸ÄÓÃÓÚ´æ´¢ÉèÖÃµÄ×¢²á±íÏî
-	// TODO: Ó¦ÊÊµ±ĞŞ¸Ä¸Ã×Ö·û´®£¬
-	// ÀıÈçĞŞ¸ÄÎª¹«Ë¾»ò×éÖ¯Ãû
-	SetRegistryKey(_T("Ó¦ÓÃ³ÌĞòÏòµ¼Éú³ÉµÄ±¾µØÓ¦ÓÃ³ÌĞò"));
+	SetRegistryKey(_T("åº”ç”¨ç¨‹åºå‘å¯¼ç”Ÿæˆçš„æœ¬åœ°åº”ç”¨ç¨‹åº"));
 
 	CScreenshotDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
 	{
-		// TODO: ÔÚ´Ë·ÅÖÃ´¦ÀíºÎÊ±ÓÃ
-		//  ¡°È·¶¨¡±À´¹Ø±Õ¶Ô»°¿òµÄ´úÂë
+		// TODO: Put code here that handles 
+		// when you close the dialog with "OK"
 	}
 	else if (nResponse == IDCANCEL)
 	{
-		// TODO: ÔÚ´Ë·ÅÖÃ´¦ÀíºÎÊ±ÓÃ
-		//  ¡°È¡Ïû¡±À´¹Ø±Õ¶Ô»°¿òµÄ´úÂë
+		// TODO: Put code here to handle
+		// when to close the dialog with "Cancel"
 	}
 
-	// ÓÉÓÚ¶Ô»°¿òÒÑ¹Ø±Õ£¬ËùÒÔ½«·µ»Ø FALSE ÒÔ±ãÍË³öÓ¦ÓÃ³ÌĞò£¬
-	//  ¶ø²»ÊÇÆô¶¯Ó¦ÓÃ³ÌĞòµÄÏûÏ¢±Ã¡£
+	// Since the dialog is closed, FALSE will be returned to exit the application,
+	// Instead of starting the application's message pump.
 	return FALSE;
 }
 
@@ -97,10 +88,10 @@ BOOL CScreenshotApp::ProcessMessageFilter(int code, LPMSG lpMsg)
 {
 	if(m_hwndDlg != NULL)
 	{
-		// Èç¹ûÏûÏ¢ÊÇ´Ó¶Ô»°¿ò·¢³öµÄ»òÕßÆä×Ó¿Ø¼ş·¢³öµÄ,¾Í½øĞĞ´¦Àí
+		// If the message is sent from a dialog box or its sub-control, it will be processed
 		if((lpMsg->hwnd == m_hwndDlg) || ::IsChild(m_hwndDlg, lpMsg->hwnd))
 		{
-			// Èç¹ûÏûÏ¢ÊÇWM_KEYDOWN,ÓÃ·½Ïò¼üµ÷ÕûÎ»ÖÃ
+			// If the message is WM_KEYDOWN, use the arrow keys to adjust the position
 			if(lpMsg->message == WM_KEYDOWN)
 			{
 				CRect rect(0,0,0,0);
@@ -110,7 +101,7 @@ BOOL CScreenshotApp::ProcessMessageFilter(int code, LPMSG lpMsg)
 
 				if(pDlg->m_bFirstDraw)
 				{
-					//Èç¹ûShift¼ü°´ÏÂÔò·½Ïò¼üµ÷Õû´óĞ¡
+					// If Shift key is pressed then the arrow keys resize
 					BOOL bIsShiftDown = FALSE;
 
 					if (GetKeyState(VK_SHIFT) & SHIFTED) 
@@ -122,7 +113,7 @@ BOOL CScreenshotApp::ProcessMessageFilter(int code, LPMSG lpMsg)
 					{
 					case VK_UP:
 
-						//Èç¹û°´ÏÂShift,ÔòÖ»µ÷ÕûÒ»±ß
+						// If Shift is pressed, only one side is adjusted
 						if(!bIsShiftDown)
 							rect.top-=1;
 
