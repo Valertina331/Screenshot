@@ -37,39 +37,36 @@ BEGIN_MESSAGE_MAP(CScreenshotDlg, CDialog)
 END_MESSAGE_MAP()
 
 
-// CScreenshotDlg 消息处理程序
+// Handling operations
 
 BOOL CScreenshotDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// 设置此对话框的图标。当应用程序主窗口不是对话框时，框架将自动
-	//  执行此操作
-	SetIcon(m_hIcon, TRUE);			// 设置大图标
-	SetIcon(m_hIcon, FALSE);		// 设置小图标
+	// Set the icon for this dialog
+	SetIcon(m_hIcon, TRUE);	
+	SetIcon(m_hIcon, FALSE);
 
-	// TODO: 在此添加额外的初始化代码
-
-	// 使窗体在最顶层
+	// make the form topmost
 	::SetWindowPos(GetSafeHwnd(), HWND_TOPMOST, 150, 150, 0, 0, 
 		SWP_NOMOVE|SWP_NOSIZE|SWP_NOREDRAW);
 
-	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
+	return TRUE;
 }
 
-// 如果向对话框添加最小化按钮，则需要下面的代码
-//  来绘制该图标。对于使用文档/视图模型的 MFC 应用程序，
-//  这将由框架自动完成。
+// If you want to add a minimize button to a dialog, you need the code below
+// to draw the icon. For MFC applications using document/view models,
+// This will be done automatically by the framework.
 
 void CScreenshotDlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // 用于绘制的设备上下文
+		CPaintDC dc(this);
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// 使图标在工作区矩形中居中
+		// Center the icon in the workspace
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -77,7 +74,6 @@ void CScreenshotDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// 绘制图标
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -86,16 +82,16 @@ void CScreenshotDlg::OnPaint()
 	}
 }
 
-//当用户拖动最小化窗口时系统调用此函数取得光标
-//显示。
+//When the user drags the minimized window, the system calls this function to get the cursor display.
+
 HCURSOR CScreenshotDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-//----------------------------------------------------------------------
-// 线程函数,用来截图
-//
+
+// Thread function for taking screenshots
+
 UINT SccreenShot_Thread (LPVOID lpParam)
 {
 	HWND hWndMain = (HWND) lpParam;
@@ -109,7 +105,7 @@ UINT SccreenShot_Thread (LPVOID lpParam)
 void CScreenshotDlg::OnBnClickedBtnStart()
 {
 	::ShowWindow (m_hWnd, SW_HIDE);
-	//使得被激活窗口出现在前景           
+	//Bring the activated window to the foreground for screenshots          
 	::AfxBeginThread (SccreenShot_Thread, (LPVOID)GetSafeHwnd());
 	//::ShowWindow (GetSafeHwnd(), SW_SHOW);
 }
