@@ -18,6 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 //-----------------------------------------------------------------------------
 // Object: class helper for popupmenu control
+// This file creates a number of pop-up windows for the software, making it easier and faster for users to use.
 //-----------------------------------------------------------------------------
 #include "stdafx.h"
 #include "popupmenu.h"
