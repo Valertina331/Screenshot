@@ -1,27 +1,25 @@
-// ScreenshotDlg.h : 头文件
+// ScreenshotDlg.h
 //
 
 #pragma once
 
-// CScreenshotDlg 对话框
+// CScreenshotDlg Generate a screenshot dialog
 class CScreenshotDlg : public CDialog
 {
-// 构造
+// Constructing standard functions
 public:
-	CScreenshotDlg(CWnd* pParent = NULL);	// 标准构造函数
-
-// 对话框数据
+	CScreenshotDlg(CWnd* pParent = NULL);
+// Storing dialog data
 	enum { IDD = IDD_SCREENSHOT_DIALOG };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 支持
+	virtual void DoDataExchange(CDataExchange* pDX);
 
 
-// 实现
+// Generate message mapping functions
 protected:
 	HICON m_hIcon;
 
-	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
