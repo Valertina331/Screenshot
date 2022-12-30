@@ -1,16 +1,16 @@
-// Screenshot.h : PROJECT_NAME 应用程序的主头文件
+// Screenshot.h : PROJECT_NAME Main header file of the application
 //
 
 #pragma once
 
 #ifndef __AFXWIN_H__
-	#error "在包含此文件之前包含“stdafx.h”以生成 PCH 文件"
+	#error "鍦ㄥ寘鍚鏂囦欢涔嬪墠鍖呭惈鈥渟tdafx.h鈥濅互鐢熸垚 PCH 鏂囦欢"
 #endif
 
-#include "resource.h"		// 主符号
+#include "resource.h"
 
 // CScreenshotApp:
-// 有关此类的实现，请参阅 Screenshot.cpp
+// Screenshot.cpp writes the specific implementation of this class.
 //
 
 class CScreenshotApp : public CWinApp
@@ -18,7 +18,7 @@ class CScreenshotApp : public CWinApp
 public:
 	CScreenshotApp();
 
-// 重写
+// Rewrite the class
 	public:
 	virtual BOOL InitInstance();
 
@@ -26,7 +26,7 @@ public:
 	HWND m_hwndDlg;
 	virtual BOOL ProcessMessageFilter(int code, LPMSG lpMsg);
 
-// 实现
+// Generate files
 
 	DECLARE_MESSAGE_MAP()
 private:
